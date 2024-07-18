@@ -12,3 +12,24 @@ import {
   import ShowApplication from './Pages/ShowApplication';
   import NavBar from './Components/NavBar'; 
   
+  function App() {
+    return (
+      <div className='App'>
+        <Router>
+          <NavBar /> 
+          <main>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/applications' element={<ApplicationsIndex />} />
+              <Route path='/applications/new' element={<NewApplicationForm />} />
+              <Route path='/applications/:id' element={<ShowApplication />} />
+              <Route path='/applications/:id/edit' element={<EditApplicationForm />} />
+              <Route path='*' element={<FourOFour />} />
+            </Routes>
+          </main>
+        </Router>
+      </div>
+    );
+  }
+  
+  export default App;

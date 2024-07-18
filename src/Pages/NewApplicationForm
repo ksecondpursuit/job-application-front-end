@@ -1,0 +1,97 @@
+// src/Pages/NewApplicationForm.jsx
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { fetchAPI } from '../utils/api';
+
+function NewApplicationForm() {
+  const navigate = useNavigate();
+  const [application, setApplication] = useState({
+    job_title: '',
+    company: '',
+    status: '',
+    date_applied: '',
+    is_favorite: false,
+  });
+
+  const addApplication = () => {
+    fetchAPI(`/applications`, {
+      method: 'POST',
+      body: JSON.stringify(application),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(() => navigate('/applications/'))
+      .catch(console.error);
+  };
+
+  const handleTextChange = (event) => {
+    setApplication({ ...application, [event.target.id]: event.target.value });
+  };
+
+  const handleCheckboxChange = () => {
+    setApplication({ ...application, is_favorite: !application.is_favorite });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addApplication();
+  };
+
+  return (
+    <div className='New'>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor='job_title'>Job Title:</label>
+        <input
+          id='job_title'
+          value={application.job_title}
+          type='text'
+          onChange={handleTextChange}
+          placeholder='Job Title'
+          required
+        />
+        <label htmlFor='company'>Company:</label>
+        <input
+          id='company'
+          value={application.company}
+          type='text'
+          onChange={handleTextChange}
+          placeholder='Company'
+          required
+        />
+        <label htmlFor='status'>Status:</label>
+        <input
+          id='status'
+          value={application.status}
+          type='text'
+          onChange={handleTextChange}
+          placeholder='Status'
+        />
+        <label htmlFor='date_applied'>Date Applied:</label>
+        <input
+          id='date_applied'
+          value={application.date_applied}
+          type='text'
+          onChange={handleTextChange}
+          placeholder='Date Applied (e.g., 2022-12-01)'
+        />
+        <label htmlFor='is_favorite'>Favorite:</label>
+        <input
+          id='is_favorite'
+          type='checkbox'
+          onChange={handleCheckboxChange}
+          checked={application.is_favorite}
+        />
+        <br />
+        <br />
+        <button type='submit'>Submit</button>
+      </form>
+      <br />
+      <Link to='/applications'>
+        <button>Nevermind!</button>
+      </Link>
+    </div>
+  );
+}
+
+export default NewApplicationForm;

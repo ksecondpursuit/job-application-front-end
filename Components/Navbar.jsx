@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function NavBar() {
   return (
     <nav>
-      <h1>Job Application Tracker</h1>
+      <h1>Pursuit's Ultimate Job Tracker</h1>
       <ul>
         <li>
           <Link to='/'>Home</Link>

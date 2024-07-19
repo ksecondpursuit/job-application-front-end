@@ -45,6 +45,6 @@ Replace http://your-backend-api-url with the URL of your backend API.
 Running the Application
 Start the development server:
 
-```sh
+```
 npm start
 The application will be available at http://localhost:3346

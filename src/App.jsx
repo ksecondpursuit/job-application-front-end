@@ -1,4 +1,6 @@
 // src/App.jsx
+import React from 'react';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +12,7 @@ import Home from './Pages/Home';
 import Index from './Pages/Index';
 import New from './Pages/New';
 import Show from './Pages/Show';
-import NavBar from './Components/NavBar';
+import NavBar from '../Components/Navbar';
 
 function App() {
   return (

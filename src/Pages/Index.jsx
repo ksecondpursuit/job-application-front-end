@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Application from '../Components/Application';
+import Application from './Application';
 import { fetchAPI } from '../utils/api';
 
 function Index() {

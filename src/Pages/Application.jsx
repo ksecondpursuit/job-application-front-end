@@ -1,3 +1,4 @@
+// src/Pages/Application.jsx
 import { Link } from 'react-router-dom';
 
 function Application({ application }) {

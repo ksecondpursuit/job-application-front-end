@@ -1,3 +1,4 @@
+// src/Pages/Index.jsx
 import { useState, useEffect } from 'react';
 import Application from './Application';
 import { fetchAPI } from '../utils/api';

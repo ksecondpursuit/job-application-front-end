@@ -1,7 +1,7 @@
 // Components/NavBar.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchAPI } from '../src/utils/api'; // Import fetchAPI
+import { fetchAPI } from '../utils/api'; // Import fetchAPI
 
 function NavBar() {
   const [applicationCount, setApplicationCount] = useState(0);

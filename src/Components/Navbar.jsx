@@ -1,19 +1,20 @@
-// Components/NavBar.jsx
+// src/Components/NavBar.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchAPI } from '../utils/api'; // Import fetchAPI
+import { fetchAPI } from '../utils/api';
 
 function NavBar() {
   const [applicationCount, setApplicationCount] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch the number of applications when the component mounts
     const fetchApplicationCount = async () => {
       try {
         const data = await fetchAPI('/applications');
         setApplicationCount(data.length);
       } catch (error) {
         console.error('Error fetching application count:', error);
+        setError('Error fetching application count.');
       }
     };
 
@@ -29,13 +30,14 @@ function NavBar() {
         </li>
         <li>
           <Link to='/applications'>
-            Applications ({applicationCount})
+            Applications ({error ? 'N/A' : applicationCount})
           </Link>
         </li>
         <li>
           <Link to='/applications/new'>New Application</Link>
         </li>
       </ul>
+      {error && <p className='error'>{error}</p>}
     </nav>
   );
 }

@@ -40,7 +40,7 @@ function NewApplicationForm() {
   return (
     <div className='New'>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='position'>Position:</label>
+        <label htmlFor='position'> Position: </label>
         <input
           id='position'
           value={application.position}
@@ -49,7 +49,7 @@ function NewApplicationForm() {
           placeholder='Position'
           required
         />
-        <label htmlFor='company'>Company:</label>
+        <label htmlFor='company'> Company: </label>
         <input
           id='company'
           value={application.company}
@@ -58,7 +58,7 @@ function NewApplicationForm() {
           placeholder='Company'
           required
         />
-        <label htmlFor='status'>Status:</label>
+        <label htmlFor='status'> Status:</label>
         <input
           id='status'
           value={application.status}
@@ -66,7 +66,7 @@ function NewApplicationForm() {
           onChange={handleTextChange}
           placeholder='Status'
         />
-        <label htmlFor='notes'>Notes:</label>
+        <label htmlFor='notes'> Notes: </label>
         <input
           id='notes'
           value={application.notes}
@@ -74,7 +74,7 @@ function NewApplicationForm() {
           onChange={handleTextChange}
           placeholder='Notes'
         />
-        <label htmlFor='date_applied'>Date Applied:</label>
+        <label htmlFor='date_applied'> Date Applied: </label>
         <input
           type='date'
           id='date_applied'
@@ -84,11 +84,11 @@ function NewApplicationForm() {
 
         <br />
         <br />
-        <button type='submit'>Submit</button>
+        <button type='submit'> Submit </button>
       </form>
       <br />
       <Link to='/applications'>
-        <button>Nevermind!</button>
+        <button> Nevermind! </button>
       </Link>
     </div>
   );

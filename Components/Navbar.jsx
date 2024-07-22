@@ -1,4 +1,5 @@
 // Components/NavBar.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 function NavBar() {
@@ -15,6 +16,7 @@ function NavBar() {
         <li>
           <Link to='/applications/new'>New Application</Link>
         </li>
+ 
       </ul>
     </nav>
   );

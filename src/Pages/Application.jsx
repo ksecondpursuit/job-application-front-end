@@ -1,5 +1,6 @@
 // src/Pages/Application.jsx
 import { Link } from 'react-router-dom';
+import { formatDate } from '../utils/dateUtils'; // Make sure you have this import
 
 function Application({ application }) {
   return (
@@ -11,6 +12,7 @@ function Application({ application }) {
       </td>
       <td>{application.company}</td>
       <td>{application.status}</td>
+      <td>{formatDate(application.date_applied)}</td>
     </tr>
   );
 }

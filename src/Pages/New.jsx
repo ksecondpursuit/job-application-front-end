@@ -1,4 +1,4 @@
-// /src/Pages/New.jsx    
+// /src/Pages/New.jsx
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { fetchAPI } from '../utils/api';
@@ -10,6 +10,7 @@ function NewApplicationForm() {
     company: '',
     status: '',
     notes: '',
+    date_applied: new Date().toISOString().split('T')[0],
   });
 
   const addApplication = () => {
@@ -73,6 +74,14 @@ function NewApplicationForm() {
           onChange={handleTextChange}
           placeholder='Notes'
         />
+        <label htmlFor='date_applied'>Date Applied:</label>
+        <input
+          type='date'
+          id='date_applied'
+          value={application.date_applied}
+          onChange={handleTextChange}
+        />
+
         <br />
         <br />
         <button type='submit'>Submit</button>

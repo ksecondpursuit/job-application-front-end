@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { fetchAPI } from '../utils/api';
+import { formatDate } from '../utils/dateUtils';
 
 function Show() {
   const [application, setApplication] = useState({});
@@ -30,6 +31,10 @@ function Show() {
       </p>
       <p>
         <strong>Notes:</strong> {application.notes}
+      </p>
+      <p>
+        <strong>Date Applied:</strong>{' '}
+        {formatDate(application.date_applied)}
       </p>
       <div className='showNavigation'>
         <Link to='/applications'>

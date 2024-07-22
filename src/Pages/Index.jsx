@@ -21,6 +21,7 @@ function Index() {
             <th>Position</th>
             <th>Company</th>
             <th>Status</th>
+            <th>Date Applied</th>
           </tr>
         </thead>
         <tbody>

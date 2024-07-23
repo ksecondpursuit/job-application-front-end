@@ -9,8 +9,8 @@ function Index() {
   const [allApplications, setAllApplications] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortConfig, setSortConfig] = useState({
-    key: null,
-    direction: 'ascending',
+    key: 'date_applied',
+    direction: 'descending',
   });
 
   useEffect(() => {
@@ -37,6 +37,11 @@ function Index() {
         return sortConfig.direction === 'ascending' ? 1 : -1;
       }
       return 0;
+    });
+  } else {
+    // Default sorting by date_applied if no sort key is specified
+    sortedApplications.sort((a, b) => {
+      return new Date(b.date_applied) - new Date(a.date_applied);
     });
   }
 

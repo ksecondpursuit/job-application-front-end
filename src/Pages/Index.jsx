@@ -49,14 +49,25 @@ function Index() {
     indexOfLastApplication
   );
 
+  const totalPages = Math.ceil(
+    allApplications.length / ITEMS_PER_PAGE
+  );
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
-  // Calculate total pages
-  const totalPages = Math.ceil(
-    allApplications.length / ITEMS_PER_PAGE
-  );
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   const handleSort = (key) => {
     let direction = 'ascending';
@@ -69,6 +80,18 @@ function Index() {
     }
 
     setSortConfig({ key: direction ? key : null, direction });
+  };
+
+  // Pagination control logic
+  const getPageNumbers = () => {
+    const pages = [];
+    const startPage = Math.max(1, currentPage - 3);
+    const endPage = Math.min(totalPages, currentPage + 3);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(i);
+    }
+    return pages;
   };
 
   return (
@@ -128,13 +151,32 @@ function Index() {
 
       {/* Pagination Controls */}
       <div className='pagination'>
-        {Array.from({ length: totalPages }, (_, i) => (
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        <span>
+          Page {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
+
+      {/* Page Numbers */}
+      <div className='page-numbers'>
+        {getPageNumbers().map((page, index) => (
           <button
-            key={i + 1}
-            onClick={() => handlePageChange(i + 1)}
-            className={currentPage === i + 1 ? 'active' : ''}
+            key={index}
+            onClick={() => handlePageChange(page)}
+            disabled={page === currentPage}
           >
-            {i + 1}
+            {page}
           </button>
         ))}
       </div>

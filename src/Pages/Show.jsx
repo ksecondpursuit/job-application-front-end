@@ -15,11 +15,18 @@ function Show() {
       .catch(console.error);
   }, [id]);
 
-  const handleDelete = () => {
+const handleDelete = () => {
+  if (
+    window.confirm(
+      'Are you sure you want to delete this application?'
+    )
+  ) {
     fetchAPI(`/applications/${id}`, { method: 'DELETE' })
       .then(() => navigate('/applications'))
       .catch(console.error);
-  };
+  }
+};
+
 
   return (
     <article>
